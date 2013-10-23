@@ -1,0 +1,90 @@
+package nebuloid;
+
+import java.awt.Image;
+import java.awt.Toolkit;
+
+import java.util.Random;
+import java.util.Date;
+
+import nebuloid.COLOR;
+
+public class Nebula extends Sprite
+{	
+	int color = COLOR.RED;
+	int rotate_speed = 0;
+
+	Image red;
+	Image blue;
+	Image purple;
+	Image orange;
+	Image yellow;
+	Image green;
+	
+	public Nebula()
+	{
+	}
+	
+	public Nebula(int color, int x, int y)
+	{
+		Random rand = new Random((new Date()).getTime());
+		
+		red = Toolkit.getDefaultToolkit().getImage(Nebula.class.getResource("/images/nebula_red.png"));
+		blue = Toolkit.getDefaultToolkit().getImage(Nebula.class.getResource("/images/nebula_blue.png"));
+		purple = Toolkit.getDefaultToolkit().getImage(Nebula.class.getResource("/images/nebula_purple.png"));
+		orange = Toolkit.getDefaultToolkit().getImage(Nebula.class.getResource("/images/nebula_orange.png"));
+		yellow = Toolkit.getDefaultToolkit().getImage(Nebula.class.getResource("/images/nebula_yellow.png"));
+		green = Toolkit.getDefaultToolkit().getImage(Nebula.class.getResource("/images/nebula_green.png"));
+
+		int size = 150;
+		width = size;
+		height = size;
+		
+		angle = rand.nextInt(360);
+		rotate_speed = 1 + rand.nextInt(3);
+		
+		setPos(x, y);
+		setColor(color);
+		setVisible(true);
+	}
+	
+	public int getColor()
+	{
+		return color;
+	}
+	
+	public void setColor(int color)
+	{
+		if (color == COLOR.RED || color == COLOR.BLUE || color == COLOR.PURPLE || 
+			color == COLOR.ORANGE || color == COLOR.YELLOW || color == COLOR.GREEN)
+			this.color = color;
+	}
+	
+	public void move()
+	{
+		angle += rotate_speed;
+		
+		if (angle > 360)
+			angle -= 360;
+		if (angle < 0)
+			angle += 360;
+	}
+	
+	//returns the current image to display
+	public Image getImage()
+	{
+		if (color == COLOR.RED)
+			image = red;
+		if (color == COLOR.BLUE)
+			image = blue;
+		if (color == COLOR.PURPLE)
+			image = purple;
+		if (color == COLOR.ORANGE)
+			image = orange;
+		if (color == COLOR.YELLOW)
+			image = yellow;
+		if (color == COLOR.GREEN)
+			image = green;
+		
+		return image;
+	}
+}

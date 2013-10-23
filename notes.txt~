@@ -1,0 +1,27 @@
+fill health on new level
+extra ship every n levels?  every n points?
+implement player death/lives
+xml levels?
+
+
+make laser call explode if it hits another laser to blow up only bombs?
+
+
+
+
+
+XML
+level colors
+
+start (x, y)
+color
+rings
+	color (or random)
+	fire delay
+
+roam mode
+patrol path mode (hold mode is just one point)
+
+boolean pursue
+
+gen balls by bounding circle/rectangle
